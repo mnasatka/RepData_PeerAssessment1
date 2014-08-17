@@ -21,3 +21,13 @@ most <- which.max(pattern$steps.int.mean)
 print(sprintf("The interval with the highest mean number of steps is: %3.0f", pattern[most,'time']))
 
 print(summary(activity$steps))
+
+activity.new <- activity
+for (i in 1:nrow(activity.new)){
+  if (is.na(activity.new$steps[i])){
+    row <- which(pattern$interval == activity.new$interval[i])
+    ##activity.new$steps[i] <- pattern$steps[row]
+  }
+} 
+
+print(summary(activity.new$steps))
